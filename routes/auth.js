@@ -77,7 +77,21 @@ router.post("/forgot-password", async (req, res) => {
       to: email,
       from: "francismwanik254@gmail.com",
       subject: "Password Reset Request",
-      text: `Click on the following link to reset your password: ${resetLink}`,
+      html : `
+      <main style="background-color: #f2f2f2; padding: 20px; font-family: Arial, Helvetica, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <div style="text-align: center; font-size: 20px; font-weight: bold;">Password Reset Request</div>
+      <div> Hello ${user.email},</div>
+      <div> You requested to reset your password</div>
+      <div> Please click on the link below to reset your password</div>
+      <br>
+      <button style="background-color: #4CAF50; padding: 10px; border-radius: 5px; border: none; color: white; cursor: pointer; margin: 10px 0px;" 
+      ><a href="${resetLink}">Reset Password</a></button>
+      <br>
+      <div> If you did not request this, please ignore this email and your password will remain unchanged</div>
+      <br>
+      <div>Regards,</div>
+      </main>
+      `
     };
 
     await sgMail.send(msg);
