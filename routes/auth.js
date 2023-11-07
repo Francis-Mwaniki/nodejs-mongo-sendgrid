@@ -91,6 +91,11 @@ router.post("/forgot-password", async (req, res) => {
 router.post("/reset-password/:token", async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
+  console.log(token, password);
+  if (!token || !password) {
+    return res.status(400).send({ message: "Invalid request" });
+  }
+
 
   try {
     const user = await User.findOne({
