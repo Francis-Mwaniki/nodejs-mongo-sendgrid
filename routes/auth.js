@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
       res
         .header("auth-token", token)
         .status(200)
-        .send({ message: `You Logged in as ${userdt.firstName}` });
+        .send({ message: `Welcome ${userdt.email}` });
     }
   }
 });
