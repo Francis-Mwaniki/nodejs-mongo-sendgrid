@@ -23,8 +23,7 @@ router.post("/register", async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
       const user = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        phoneNumber: req.body.phoneNumber,
         email: req.body.email,
         password: hashedPassword,
         confirmPassword: hashedPassword,
@@ -73,7 +72,7 @@ router.post("/forgot-password", async (req, res) => {
     user.resetPasswordExpires = Date.now() + 3600000; // Token expires in 1 hour
     await user.save();
 
-    const resetLink = `$https://render.com/reset-password/${resetToken}`;
+    const resetLink = `https://nexti-authentication.vercel.app/UpdatePassword/${resetToken}`;
     const msg = {
       to: email,
       from: "francismwanik254@gmail.com",
