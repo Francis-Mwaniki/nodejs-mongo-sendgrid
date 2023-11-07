@@ -85,7 +85,8 @@ router.post("/forgot-password", async (req, res) => {
       <div> Please click on the link below to reset your password</div>
       <br>
       <button style="background-color: #4CAF50; padding: 10px; border-radius: 5px; border: none; color: white; cursor: pointer; margin: 10px 0px;" 
-      ><a href="${resetLink}">Reset Password</a></button>
+      ><a style="text-decoration: none; color: white;"
+       href="${resetLink}">Reset Password</a></button>
       <br>
       <div> If you did not request this, please ignore this email and your password will remain unchanged</div>
       <br>
